@@ -7,7 +7,7 @@ html{
 }
 
 main{
-    margin-bottom: 250px; /* Hauteur du footer */
+    margin-bottom: 270px; /* Hauteur du footer */
 }
 
 
@@ -26,6 +26,7 @@ p{
 
 .hero-scene {
     position : relative;
+    margin-bottom: 15px;
     &::before{
         content:"";
         position: absolute;
@@ -56,3 +57,46 @@ p{
 .text-justify{
     text-align: justify;
 }
+
+.image-card{
+   position: relative;
+    &:hover{
+        .titre-image, .action-image-buttons{
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+        img{
+            filter: brightness(0.3);
+        }
+    }
+        
+   
+    img{
+        transition: all 0.5s ease-in-out;
+    }
+    .titre-image{
+         position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+    }
+    }
+
+    .action-image-buttons{
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        transform: translate(0%, 0%);
+        width: 100%;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .form-label{
+        color: $primary;
+
+    }
