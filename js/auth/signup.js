@@ -87,17 +87,17 @@ function validateConfirmationPassword(inputPwd, inputConfirmPwd) {
 
 
 function validateRequired(input) {
-    if (input.value != ''){
-        // signifie que input est rempli OK
-        input.classList.add("is-valid");
-        input.classList.remove("is-invalid");
-        return true;
-    } 
-    else {
+    if (input.value === ''){
         // signifie que input est vide PAS OK
         input.classList.remove("is-valid");
         input.classList.add("is-invalid");
         return false;
+    } 
+    else {
+        // signifie que input est rempli OK
+        input.classList.add("is-valid");
+        input.classList.remove("is-invalid");
+        return true;
     }
 }
 
@@ -123,7 +123,16 @@ let requestOptions = {
 };
 
 fetch("https://127.0.0.1:8000/api/registration", requestOptions)
-  .then(response => response.json())
-  .then(result => console.log(result))
+  .then(response => {
+    if(response.ok) {
+      return response.json();
+    } else {
+        alert('Erreur lors de l\'inscription');
+    }
+  })
+  .then(result => {
+    alert('Bravo '+(dataForm.get("prenom") || '')+', vous êtes maintenant inscrit, vous pouvez vous connecter !')
+   document.location.href = "/signin";
+  })
   .catch(error => console.log('error', error));
 }
